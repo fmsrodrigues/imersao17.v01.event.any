@@ -1,0 +1,52 @@
+@AuthToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoidXNlcjEiLCJpYXQiOjE3MDY3Mzk2MzcsImV4cCI6MTcxMTkyMzYzN30.LIydy4KyhEupwNbLExWfWNi4OIH-HDIqTL1GxVcXZw4
+
+###
+
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "username": "user1",
+  "password": "password1"
+}
+
+###
+
+GET http://localhost:3000/products
+
+###
+
+POST http://localhost:3000/products
+Content-Type: application/json
+
+{
+  "name": "Product 1",
+  "price": 100,
+  "description": "Product 1 description",
+  "image_url": "product1.jpg"
+}
+
+###
+
+GET http://localhost:3000/orders/
+Authorization: Bearer {{AuthToken}}
+
+###
+
+POST http://localhost:3000/orders/
+Content-Type: application/json
+Authorization: Bearer {{AuthToken}}
+
+{
+  "items": [
+    {
+      "product_id": "04c4353a-3f6d-4272-a8f2-44b82c05ecc0",
+      "quantity": 2
+    },
+    {
+      "product_id": "0afa7630-4fc1-4d69-beed-4f8f15becadc",
+      "quantity": 1
+    }
+  ],
+  "card_hash": "1231"
+}
